@@ -32,6 +32,12 @@ class ImageUploader {
         this.fileHolder.setAttribute("accept", "image/*");
         this.fileHolder.setAttribute("style", "visibility:hidden");
 
+        if (this.options.input) {
+            for (const attr in this.options.input) {
+                this.fileHolder.setAttribute(attr, this.options.input[attr]);
+            }
+        }
+
         this.fileHolder.onchange = this.fileChanged.bind(this);
 
         document.body.appendChild(this.fileHolder);
